@@ -2,11 +2,9 @@
   "name": "Webpage-Builder",
   "version": "1.0.0",
   "devDependencies": {
-    "@babel/cli": "^7.28.6",
-    "@babel/preset-env": "^7.29.0",
-    "@babel/preset-react": "^7.28.5",
     "@rollup/plugin-commonjs": "^29.0.0",
     "@rollup/plugin-node-resolve": "^16.0.3",
+    "@swc/cli": "^0.8.0",
     "rollup": "^4.57.1",
     "terser": "^5.46.0"
   }
