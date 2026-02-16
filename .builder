@@ -33,7 +33,13 @@ build_css() {
     
     echo -e "\n$input -> $output"
 
-    npx lightningcss "$input" -o "$output" --browserslist --bundle --minify
+    if [[ $NODE_ENV == "development" ]]; then
+
+      npx lightningcss "$input" -o "$output" --browserslist --bundle
+    else
+
+      npx lightningcss "$input" -o "$output" --browserslist --bundle --minify
+    fi
   fi
 }
 
@@ -52,12 +58,17 @@ build_js() {
     
     sed -i -e "/^import/d" "${output/%.js/.transpiled.js}"
 
-    npx terser "${output/%.js/.transpiled.js}" -o "${output/%.js/.compressed.js}" -c -m
+    if [[ $NODE_ENV == "development" ]]; then
 
-    cp "${output/%.js/.compressed.js}" "$output"
+      cp "${output/%.js/.transpiled.js}" "$output"
+    else
+
+      npx terser "${output/%.js/.transpiled.js}" -o "${output/%.js/.compressed.js}" -c -m
+      cp "${output/%.js/.compressed.js}" "$output"
+    fi
 
     rm "${output/%.js/.combined.js}"
     rm "${output/%.js/.transpiled.js}"
-    rm "${output/%.js/.compressed.js}"
+    rm -f "${output/%.js/.compressed.js}"
   fi
 }
