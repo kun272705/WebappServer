@@ -35,10 +35,10 @@ build_css() {
 
     if [[ ${NODE_ENV:="production"} == "development" ]]; then
 
-      npx lightningcss "$input" -o "$output" --browserslist --bundle
+      npx lightningcss "$input" -o "$output" --bundle --browserslist
     else
 
-      npx lightningcss "$input" -o "$output" --browserslist --bundle --minify
+      npx lightningcss "$input" -o "$output" --bundle --browserslist --minify
     fi
   fi
 }
