@@ -12,6 +12,18 @@ copy_entry() {
   fi
 }
 
+build_html() {
+
+  local input="$1"
+  local output="$2"
+}
+
+build_css() {
+
+  local input="$1"
+  local output="$2"
+}
+
 build_js() {
 
   local input="$1"

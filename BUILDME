@@ -19,22 +19,32 @@ if [ -d source/pub.favicon/ ]; then
   done
 fi
 
-for dir in source/*.*/; do
-  
+mkdir -p target/pub/lib/
+
+for dir in source/pub.lib.*/; do
+
+  for entry in "${dir}"*; do
+
+    copy_entry "$entry" "target/pub/lib/${entry#${dir}}"
+  done
+done
+
+for dir in source/pub.*/; do
+ 
   dir="${dir%/}"
   
   name="${dir##*.}"
   
-  dir2="${dir#source/}"
-  dir2="${dir2%.*}"
-  dir2="${dir2//.//}"
+  if [ -f "$dir/$name.html" ]; then
 
-  build_js "$dir/$name.js" "target/$dir2/$name.js"
+    dir2="${dir#source/}"
+    dir2="${dir2%.*}"
+    dir2="${dir2//.//}"
+
+    build_html "$dir/$name.html" "target/$dir2/$name.html"
+    build_css "$dir/$name.css" "target/$dir2/$name.css"
+    build_js "$dir/$name.js" "target/$dir2/$name.js"
+  fi
 done
-
-if [ -d source/pub.robots/ ]; then
-
-  copy_entry source/pub.robots/robots.txt target/pub/robots.txt
-fi
 
 echo -e "\nDone"
