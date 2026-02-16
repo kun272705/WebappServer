@@ -7,14 +7,17 @@ IFS=$'\n\t'
 
 npm install
 
-mkdir target/
+mkdir -p target/
 
-mkdir target/pub/
+mkdir -p target/pub/
 
-for entry in source/pub.brand/*; do
+if [ -d source/pub.favicon/ ]; then
 
-  copy_entry "$entry" "target/pub/${entry#source/pub.brand/}"
-done
+  for entry in source/pub.favicon/*; do
+
+    copy_entry "$entry" "target/pub/${entry#source/pub.favicon/}"
+  done
+fi
 
 for dir in source/*.*/; do
   
@@ -28,5 +31,10 @@ for dir in source/*.*/; do
 
   build_js "$dir/$name.js" "target/$dir2/$name.js"
 done
+
+if [ -d source/pub.robots/ ]; then
+
+  copy_entry source/pub.robots/robots.txt target/pub/robots.txt
+fi
 
 echo -e "\nDone"
