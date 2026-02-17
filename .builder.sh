@@ -7,7 +7,7 @@ copy_entry() {
   local input="$1"
   local output="$2"
 
-  if [ -e "$input" ]; then
+  if [ -f "$input" ]; then
 
     echo -e "\n'$input' -> '$output'"
 

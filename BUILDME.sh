@@ -20,7 +20,7 @@ for dir in src/pub.lib.*/; do
 
   for entry in "${dir}"*; do
 
-    copy_entry "$entry" "tgt/pub/lib/${entry#"${dir}"}"
+    copy_entry "$entry" "tgt/pub/lib/${entry#"$dir"}"
   done
 done
 
