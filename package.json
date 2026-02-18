@@ -1,5 +1,5 @@
 {
-  "name": "WebsiteBuilder",
+  "name": "mywebsite",
   "version": "1.0.0",
   "devDependencies": {
     "@swc/cli": "^0.8.0",
