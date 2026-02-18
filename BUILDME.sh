@@ -6,16 +6,16 @@ source .builder.sh
 
 npm install
 
-mkdir -p tgt/
+mvn dependency:copy-dependencies -DoutputDirectory=tgt/lib/
 
-for item in src/pub/res/*; do
+for file in src/pub/res/*; do
 
-  copy_item "$item" "tgt/pub/${item##*/}"
+  copy_file "$file" "tgt/pub/${file##*/}"
 done
 
-for item in src/pub/lib.*/*; do
+for file in src/pub/lib.*/*; do
 
-  copy_item "$item" "tgt/pub/lib/${item##*/}"
+  copy_file "$file" "tgt/pub/lib/${file##*/}"
 done
 
 for dir in src/pub/*/; do

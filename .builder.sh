@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-copy_item() {
+copy_file() {
 
   local src="$1"
   local dst="$2"
@@ -96,6 +96,5 @@ build_java() {
   if [ -f "$input" ]; then
 
     echo -e "\n'$input' -> '$output'"
-    # TODO
   fi
 }
