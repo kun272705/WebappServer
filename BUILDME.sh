@@ -10,7 +10,7 @@ mkdir -p tgt/
 
 for item in src/pub/res/*; do
 
-  copy_item "$item" "tgt/pub/${item###*/}"
+  copy_item "$item" "tgt/pub/${item##*/}"
 done
 
 for item in src/pub/lib.*/*; do
