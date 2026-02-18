@@ -66,7 +66,7 @@ build_js() {
 
     echo -e "\n'$input' -> '$output'"
 
-    npx rollup -c -i "$input" -o "${output/%.js/.combined.js}" -f iife --failAfterWarnings
+    npx rollup --jsx preserve -i "$input" -o "${output/%.js/.combined.js}" -f iife --failAfterWarnings
 
     npx swc "${output/%.js/.combined.js}" -o "${output/%.js/.transpiled.js}"
     
@@ -96,5 +96,6 @@ build_java() {
   if [ -f "$input" ]; then
 
     echo -e "\n'$input' -> '$output'"
+    # TODO
   fi
 }
