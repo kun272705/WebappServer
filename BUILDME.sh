@@ -25,7 +25,7 @@ for dir in src/pub/*/; do
 
   name="${item##*/}"
 
-  if [ -f "$dir$name.html" ]; then
+  if [ -f "$dir$name.java" ]; then
 
     build_html "$dir$name.html" "tgt/pub/${item#src/pub/}.html"
 
