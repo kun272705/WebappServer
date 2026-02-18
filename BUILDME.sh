@@ -6,7 +6,7 @@ source .builder.sh
 
 npm install
 
-mvn dependency:copy-dependencies -DoutputDirectory=tgt/lib/
+mvn dependency:copy-dependencies -DoutputDirectory=java_modules/
 
 for file in src/pub/res/*; do
 
@@ -17,6 +17,8 @@ for file in src/pub/lib.*/*; do
 
   copy_file "$file" "tgt/pub/lib/${file##*/}"
 done
+
+mvn dependency:copy-dependencies -DoutputDirectory=tgt/lib/ -DincludeScope=runtime
 
 for dir in src/pub/*/; do
  
