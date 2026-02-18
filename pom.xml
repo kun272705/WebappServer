@@ -3,8 +3,4 @@
   <groupId>com.mycompany.mywebsite</groupId>
   <artifactId>mywebsite</artifactId>
   <version>1.0.0</version>
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.release>25</maven.compiler.release>
-  </properties>
 </project>
