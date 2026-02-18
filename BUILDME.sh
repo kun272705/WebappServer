@@ -8,41 +8,32 @@ npm install
 
 mkdir -p tgt/
 
-if [ -d src/pub.res/ ]; then
+for item in src/pub/res/*; do
 
-  for entry in src/pub.res/*; do
-
-    copy_entry "$entry" "tgt/pub/${entry#src/pub.res/}"
-  done
-fi
-
-for dir in src/pub.lib.*/; do
-
-  for entry in "${dir}"*; do
-
-    copy_entry "$entry" "tgt/pub/lib/${entry#"$dir"}"
-  done
+  copy_item "$item" "tgt/pub/${item###*/}"
 done
 
-for dir in src/pub.*/; do
+for item in src/pub/lib.*/*; do
+
+  copy_item "$item" "tgt/pub/lib/${item##*/}"
+done
+
+for dir in src/pub/*/; do
  
-  dir="${dir%/}"
-  
-  name="${dir##*.}"
+  item="${dir//.//}"
+  item="${item%/}"
 
-  dir2="${dir#src/}"
-  dir2="${dir2%.*}"
-  dir2="${dir2//.//}"
-  
-  if [ -f "$dir/$name.java" ]; then
+  name="${item##*/}"
 
-    build_html "$dir/$name.html" "tgt/$dir2/$name.html"
+  if [ -f "$dir$name.html" ]; then
 
-    build_css "$dir/$name.css" "tgt/$dir2/$name.css"
+    build_html "$dir$name.html" "tgt/pub/${item#src/pub/}.html"
 
-    build_js "$dir/$name.js" "tgt/$dir2/$name.js"
+    build_css "$dir$name.css" "tgt/pub/${item#src/pub/}.css"
 
-    build_java "$dir/$name.java" "tgt/$dir2/$name.jar"
+    build_js "$dir$name.js" "tgt/pub/${item#src/pub/}.js"
+
+    build_java "$dir$name.java" "tgt/pub/${item#src/pub/}.jar"
   fi
 done
 

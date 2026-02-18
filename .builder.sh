@@ -2,16 +2,18 @@
 
 set -euo pipefail
 
-copy_entry() {
+copy_item() {
 
-  local input="$1"
-  local output="$2"
+  local src="$1"
+  local dst="$2"
 
-  if [ -f "$input" ]; then
+  if [ -e "$src" ]; then
 
-    echo -e "\n'$input' -> '$output'"
+    echo -e "\n'$src' -> '$dst'"
 
-    install -D "$input" "$output"
+    mkdir -p "${dst%/*}"
+
+    cp -r -T "$src" "$dst"
   fi
 }
 
