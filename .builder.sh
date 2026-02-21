@@ -29,9 +29,9 @@ build_jar() {
     local indir="${input%/*}/"
     local outdir="${output%/*}/"
 
-    javac -cp "java_packages/*" "$input" -d "$outdir"
+    javac -cp "java_packages/*" "$input" -d "${outdir}classes/"
 
-    local args=("-C" "$outdir" "Handler.class")
+    local args=("-C" "${outdir}classes/" "./")
 
     if [ -f "${input/%.java/.html}" ]; then
 
@@ -53,7 +53,7 @@ build_jar() {
 
     jar -c -f "$output" "${args[@]}"
 
-    rm "${outdir}Handler.class"
+    rm "${outdir}classes/"
     rm -f "${outdir}template.html"
   fi
 }
