@@ -1,2 +1,2 @@
 
-This is mywebsite.
+This is MyWebsite.
