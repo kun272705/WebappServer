@@ -10,6 +10,8 @@ npm install
 
 vim .browserslistrc
 
+mvn dependency:copy-dependencies -DoutputDirectory=tgt/lib/ -DincludeScope=runtime
+
 for file in src/pub/res/*; do
 
   copy_file "$file" "tgt/pub/${file##*/}"
@@ -19,8 +21,6 @@ for file in src/pub/lib.*/*; do
 
   copy_file "$file" "tgt/pub/lib/${file##*/}"
 done
-
-mvn dependency:copy-dependencies -DoutputDirectory=tgt/lib/ -DincludeScope=runtime
 
 for dir in src/pub/*/; do
  
