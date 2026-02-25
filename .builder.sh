@@ -89,8 +89,6 @@ build_js() {
     npx rollup -i "$input" -o "${output/%.js/.combined.js}" -f iife --failAfterWarnings
 
     npx swc "${output/%.js/.combined.js}" -o "${output/%.js/.transpiled.js}"
-    
-    sed -i -e "/^import/d" "${output/%.js/.transpiled.js}"
 
     if [[ "${NODE_ENV:-production}" == development ]]; then
 
