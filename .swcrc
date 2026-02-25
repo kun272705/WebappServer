@@ -1,17 +1,5 @@
 {
   "env": {
     "bugfixes": true
-  },
-  "jsc": {
-    "parser": {
-      "syntax": "ecmascript",
-      "jsx": true
-    },
-    "transform": {
-      "react": {
-        "runtime": "automatic",
-        "throwIfNamespace": false
-      }
-    }
   }
 }
