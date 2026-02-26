@@ -29,6 +29,8 @@ build_jar() {
     local indir="${input%/*}/"
     local outdir="${output%/*}/"
 
+    mkdir -p "${outdir}classes/"
+
     javac -cp "java_packages/*" "${input/%Handler.java/*.java}" -d "${outdir}classes/"
 
     local args=("-C" "${outdir}classes/" "./")
